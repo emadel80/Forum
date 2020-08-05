@@ -1,0 +1,26 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: /Users/user/Sites/Laravel/Forum
+        to: /home/vagrant/forum
+sites:
+    -
+        map: forum.local
+        to: /home/vagrant/forum/public
+databases:
+    - forum
+features:
+    -
+        mariadb: false
+    -
+        ohmyzsh: true
+    -
+        webdriver: false
+name: forum
+hostname: forum

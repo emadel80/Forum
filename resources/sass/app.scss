@@ -1,1 +1,42 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Variables
+// @import 'variables';
+
+// Materialize
+@import '~materialize-css/sass/materialize';
+
+.nav-wrapper {
+    margin: 0 2rem;
+}
+
+.card .card-title.text-strong {
+    font-weight: bold;
+}
+
+.card-vertical-align {
+    margin-top: 160px;
+}
+
+.card-action.card-action-container {
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
+
+.row.row-form {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .card-vertical-align {
+        margin-top: 200px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .card-vertical-align {
+        margin-top: 129px;
+    }
+}

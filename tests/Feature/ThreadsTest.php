@@ -3,38 +3,45 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Reply;
 use App\Models\Thread;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ThreadsTest extends TestCase
 {
     use DatabaseMigrations;
-    
+ 
+    public function setUp() : void
+    {
+        parent::setUp();
+
+        $this->thread = factory(Thread::class)->create();
+    }
+
     /** @test */
     public function a_user_can_visit_the_threads_endpoint()
     {
-        $response = $this->get('/threads');
-
-        $response->assertStatus(200);
+        $this->get('/threads')->assertStatus(200);
     }
 
     /** @test */
     public function a_user_can_view_all_threads()
     {
-        $thread = factory(Thread::class)->create();
-        
-        $response = $this->get('/threads');
-
-        $response->assertSee($thread->title);
+        $this->get('/threads')->assertSee($this->thread->title);
     }
 
     /** @test */
     public function a_user_can_read_a_single_thread()
     {
-        $thread = factory(Thread::class)->create();
+        $this->get($this->thread->path())->assertSee($this->thread->title);
+    }
 
-        $response = $this->get('/threads/' . $thread->id);
+    /** @test */
+    public function a_user_can_read_replies_that_are_associated_with_a_thread()
+    {
+        $reply = factory(Reply::class)->create(['thread_id' => $this->thread->id]);
 
-        $response->assertSee($thread->title);
+        $this->get($this->thread->path())->assertSee($reply->body);
+        
     }
 }

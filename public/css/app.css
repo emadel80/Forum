@@ -9173,6 +9173,10 @@ input[type=range]::-ms-thumb {
   font-weight: bold;
 }
 
+.card .card-title.reply-card-title {
+  font-size: 1.4rem;
+}
+
 .card-vertical-align {
   margin-top: 160px;
 }

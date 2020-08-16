@@ -9173,8 +9173,12 @@ input[type=range]::-ms-thumb {
   font-weight: bold;
 }
 
+.card .card-title.thread-card-title {
+  font-size: 1.8rem;
+}
+
 .card .card-title.reply-card-title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .card-vertical-align {

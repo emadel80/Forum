@@ -27,6 +27,34 @@
             @endforeach
         </div>
     </div>
+    @if (auth()->check())
+        <div class="row">
+            <form class="col s12" method="POST" action="{{ $thread->path() . '/replies' }}">
+                @csrf
+                <div class="row pt-1">
+                    <div class="input-field col s10">
+                        <i class="material-icons teal-text text-accent-4 prefix">mode_edit</i>
+                        <textarea id="body" class="materialize-textarea" name="body"></textarea>
+                        <label for="body">Message</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <button class="btn waves-effect waves-light ml-2" type="submit" name="reply">
+                            Reply
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    @else
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.
+                </p>
+            </div>
+        </div>
+    @endif
 </div>
 @endsection
 

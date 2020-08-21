@@ -69,7 +69,7 @@
                                     <input id="password-confirm" 
                                             class="validate" 
                                             type="password" 
-                                            name="password-confirmation" 
+                                            name="password_confirmation" 
                                             required 
                                             autocomplete="new-password">
                                     <label for="password-confirm">{{ _('Confirm Password') }}</label>

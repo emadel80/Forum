@@ -20,29 +20,34 @@ class ThreadsTest extends TestCase
         parent::setUp();
 
         $this->thread = factory(Thread::class)->create();
+        $this->user = factory(User::class)->create();
     }
 
     /** @test */
-    public function a_user_can_visit_the_threads_endpoint()
+    public function a_user_can_access_the_threads_page()
     {
         $this->get('/threads')->assertStatus(200);
     }
 
     /** @test */
-    public function a_user_can_view_all_threads()
+    public function an_authenticated_user_can_view_all_threads()
     {
+        $this->be($this->user);
         $this->get('/threads')->assertSee($this->thread->title);
     }
 
     /** @test */
-    public function a_user_can_read_a_single_thread()
+    public function an_unauthenticated_user_can_read_a_single_thread()
     {
+        $this->be($this->user);
         $this->get($this->thread->path())->assertSee($this->thread->title);
     }
 
     /** @test */
-    public function a_user_can_read_replies_that_are_associated_with_a_thread()
+    public function an_authenticated_user_can_read_replies_that_are_associated_with_a_thread()
     {
+        $this->be($this->user);
+
         $reply = factory(Reply::class)->create(['thread_id' => $this->thread->id]);
 
         $this->get($this->thread->path())->assertSee($reply->body);

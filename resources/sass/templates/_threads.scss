@@ -1,0 +1,35 @@
+// Navigation Bar
+.nav-wrapper {
+    margin: 0 2rem;
+}
+
+.nav-wrapper ul.left {
+    position: relative;
+    left: 10%;
+}
+
+// Content
+.card .card-title.text-strong {
+    font-weight: bold;
+}
+
+.card .card-title.thread-card-title {
+    font-size: 1.8rem;
+}
+
+.card .card-title.reply-card-title {
+    font-size: 1.2rem;
+}
+
+.card-vertical-align {
+    margin-top: 160px;
+}
+
+.card-action.card-action-container {
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
+
+.row.row-form {
+    margin-bottom: 0;
+}

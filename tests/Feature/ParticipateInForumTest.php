@@ -25,9 +25,9 @@ class ParticipateInForumTest extends TestCase
     /** @test */
     public function an_unauthenticated_user_may_not_add_replies()
     {
-        $this->expectException(AuthenticationException::class);
         $this->withoutExceptionHandling();
-        $this->post(url($this->thread->path() . '/replies'), []);
+        $this->expectException(AuthenticationException::class);
+        $this->post('/threads/1/replies', []);
     }
 
     /** @test */

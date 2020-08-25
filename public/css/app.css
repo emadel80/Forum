@@ -9165,40 +9165,6 @@ input[type=range]::-ms-thumb {
   }
 }
 
-.nav-wrapper {
-  margin: 0 2rem;
-}
-
-.nav-wrapper ul.left {
-  position: relative;
-  left: 10%;
-}
-
-.card .card-title.text-strong {
-  font-weight: bold;
-}
-
-.card .card-title.thread-card-title {
-  font-size: 1.8rem;
-}
-
-.card .card-title.reply-card-title {
-  font-size: 1.2rem;
-}
-
-.card-vertical-align {
-  margin-top: 160px;
-}
-
-.card-action.card-action-container {
-  padding-top: 2rem;
-  padding-bottom: 0;
-}
-
-.row.row-form {
-  margin-bottom: 0;
-}
-
 #app main .landing {
   background-color: #fff;
   color: #636b6f;
@@ -9248,6 +9214,40 @@ input[type=range]::-ms-thumb {
 
 .m-b-md {
   margin-bottom: 30px;
+}
+
+.nav-wrapper {
+  margin: 0 2rem;
+}
+
+.nav-wrapper ul.left {
+  position: relative;
+  left: 10%;
+}
+
+.card .card-title.text-strong {
+  font-weight: bold;
+}
+
+.card .card-title.thread-card-title {
+  font-size: 1.8rem;
+}
+
+.card .card-title.reply-card-title {
+  font-size: 1.2rem;
+}
+
+.card-vertical-align {
+  margin-top: 160px;
+}
+
+.card-action.card-action-container {
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+.row.row-form {
+  margin-bottom: 0;
 }
 
 .ml-1 {

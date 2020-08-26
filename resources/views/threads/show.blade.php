@@ -29,7 +29,7 @@
     </div>
     @if (auth()->check())
         <div class="row">
-            <form class="col s12" method="POST" action="{{ $thread->path() . '/replies' }}">
+            <form class="col s12" method="POST" action="{{ route('replies.store', $thread->id) }}">
                 @csrf
                 <div class="row pt-1">
                     <div class="input-field col s10">

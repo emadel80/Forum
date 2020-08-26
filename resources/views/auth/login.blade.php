@@ -6,13 +6,13 @@
         <div class="col s12">
             <div class="card card-vertical-align">
                 <div class="card-content">
-                    <span class="card-title teal-text text-lighten-1 text-strong center-align">
-                        {{ _('Login') }}
+                    <span class="card-title teal-text text-lighten-1 center-align">
+                       <h2 class="thread-card-title">{{ _('Login') }}</h2>
                     </span>
                     <div class="row">
                         <form class="col s12" action="{{ route('login') }}" method="POST">
                             @csrf
-                            <div class="row">
+                            <div class="row pt-1">
                                 <div class="input-field col s12">
                                     <input id="email" 
                                             class="validate" 

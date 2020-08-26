@@ -32,7 +32,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(Thread::class, function (Faker $faker) {
     return [
         'user_id' => function () {
-            return factory(User::class)->create()->id;
+            return create(User::class)->id;
         },
         'title' => $faker->sentence,
         'body'  => $faker->paragraph
@@ -42,10 +42,10 @@ $factory->define(Thread::class, function (Faker $faker) {
 $factory->define(Reply::class, function (Faker $faker) {
     return [
         'thread_id' => function () {
-            return factory(Thread::class)->create()->id;
+            return create(Thread::class)->id;
         },
         'user_id' => function () {
-            return factory(User::class)->create()->id;
+            return create(User::class)->id;
         },
         'body' => $faker->paragraph
     ];

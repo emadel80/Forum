@@ -17,7 +17,7 @@
         <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="mobile-nav" class="left hide-on-med-and-down">
             <li>
-                <a href="{{ route('threads') }}">
+                <a href="{{ route('threads.index') }}">
                     {{ _('All Threads') }}
                 </a>
             </li>
@@ -38,7 +38,7 @@
 </nav>
 <ul class="sidenav" id="mobile-menu">
     <li>
-        <a href="{{ route('threads') }}">
+        <a href="{{ route('threads.index') }}">
             {{ _('All Threads') }}
         </a>
     </li> 

@@ -42,12 +42,12 @@ class LoginController extends Controller
     protected function authenticated()
     {
         if (Auth::check()) {
-            return redirect()->route('threads');
+            return redirect()->route('threads.index');
         }
     }
     
     protected function loggedOut()
     {
-        return redirect()->route('threads');
+        return redirect()->route('threads.index');
     }
 }

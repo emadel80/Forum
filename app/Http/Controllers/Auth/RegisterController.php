@@ -75,7 +75,7 @@ class RegisterController extends Controller
     protected function registered()
     {
         if (Auth::check()) {
-            return redirect()->route('/threads');
+            return redirect()->route('threads.index');
         }
     }
 }

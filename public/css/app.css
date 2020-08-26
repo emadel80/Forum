@@ -9225,15 +9225,15 @@ input[type=range]::-ms-thumb {
   left: 10%;
 }
 
-.card .card-title.text-strong {
+.card .card-content .card-title.text-strong {
   font-weight: bold;
 }
 
-.card .card-title.thread-card-title {
-  font-size: 1.8rem;
+.card .card-content .card-title .thread-card-title {
+  font-size: 2.8rem;
 }
 
-.card .card-title.reply-card-title {
+.card .card-content .card-title .reply-card-title {
   font-size: 1.2rem;
 }
 
@@ -9256,6 +9256,10 @@ input[type=range]::-ms-thumb {
 
 .ml-2 {
   margin-left: 1.7rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
 }
 
 .pt-1 {

@@ -10,15 +10,6 @@ use Illuminate\Auth\AuthenticationException;
 
 class ParticipateInForumTest extends TestCase
 {
-    protected function setUp() : void
-    {
-        parent::setUp();
-
-        $this->user = create(User::class);
-        $this->thread = create(Thread::class);
-        $this->reply = make(Reply::class);
-    }
-
     /** @test */
     public function an_unauthenticated_user_may_not_add_replies()
     {
@@ -29,9 +20,11 @@ class ParticipateInForumTest extends TestCase
     /** @test */
     public function an_authenticated_user_may_participate_in_forum_threads()
     {
-        $this->signIn($this->user);
+        $this->signIn(create(User::class));
+        $thread = create(Thread::class);
+        $reply  = create(Reply::class);
 
-        $this->post(url($this->thread->path() . '/replies'), $this->reply->toArray());
-        $this->get($this->thread->path())->assertSee($this->reply->body);
+        $this->post(url($thread->path() . '/replies'), $reply->toArray());
+        $this->get($thread->path())->assertSee($reply->body);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-use App\Utilities\Forum;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('threads/{channel}/{thread}/replies',  'RepliesController@store')->name('replies.store');
+Route::get('threads', 'ThreadsController@index')->name('threads.index');
+Route::get('threads/create', 'ThreadsController@create')->name('threads.create');
+Route::get('threads/{channel}/{thread}', 'ThreadsController@show')->name('threads.show');
+Route::post('threads', 'ThreadsController@store')->name('threads.store');
 
-Forum::routes('threads', [
-    'routes' => [
-        'show' => 'threads/{channel}/{thread}',
-    ]
-]);
-
+Route::post('threads/{channel}/{thread}/replies',    'RepliesController@store')->name('replies.store');

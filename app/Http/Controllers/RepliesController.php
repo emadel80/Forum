@@ -16,7 +16,7 @@ class RepliesController extends Controller
     {
         $thread->addReply([
             'body' => request('body'),
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
 
         return back();

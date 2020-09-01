@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Reply;
-use App\Models\Thread;
-use Illuminate\Auth\AuthenticationException;
 
 class ParticipateInForumTest extends TestCase
 {
@@ -15,15 +13,15 @@ class ParticipateInForumTest extends TestCase
         parent::setUp();
 
         $this->user = create(User::class);
-        $this->thread = create(Thread::class);
         $this->reply = make(Reply::class);
     }
 
     /** @test */
     public function an_unauthenticated_user_may_not_add_replies()
     {
-        $this->expectException(AuthenticationException::class);
-        $this->post('/threads/1/replies', []);
+        $this->withExceptionHandling()
+            ->post($this->reply->path(), [])
+            ->assertRedirect(route('login'));
     }
 
     /** @test */
@@ -31,7 +29,7 @@ class ParticipateInForumTest extends TestCase
     {
         $this->signIn($this->user);
 
-        $this->post(url($this->thread->path() . '/replies'), $this->reply->toArray());
-        $this->get($this->thread->path())->assertSee($this->reply->body);
+        $this->post($this->reply->path(), $this->reply->toArray());
+        $this->get($this->reply->thread->path())->assertSee($this->reply->body);
     }
 }

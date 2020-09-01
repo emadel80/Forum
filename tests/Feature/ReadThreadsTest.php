@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Reply;
 use App\Models\Thread;
 
-class ThreadsTest extends TestCase
+class ReadThreadsTest extends TestCase
 {
     protected $thread;
 

@@ -5,6 +5,7 @@
 use App\Models\User;
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Channel;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -34,11 +35,23 @@ $factory->define(Thread::class, function (Faker $faker) {
         'user_id' => function () {
             return create(User::class)->id;
         },
+        'channel_id' => function () {
+            return create(Channel::class)->id;
+        },
         'title' => $faker->sentence,
         'body'  => $faker->paragraph
     ];
 });
 
+$factory->define(Channel::class, function (Faker $faker) {
+    $name = $faker->word;
+    
+    return [
+        'name' => $name,
+        'slug' => $name
+    ]; 
+});
+  
 $factory->define(Reply::class, function (Faker $faker) {
     return [
         'thread_id' => function () {

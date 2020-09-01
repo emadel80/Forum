@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Thread;
+use App\Models\Channel;
 use Illuminate\Database\Eloquent\Collection;
 
 class ThreadsTest extends TestCase
@@ -16,6 +17,15 @@ class ThreadsTest extends TestCase
         parent::setUp();
 
         $this->thread = create(Thread::class);
+    }
+
+    /** @test */
+    public function a_thread_can_make_a_string_path()
+    {
+        $this->assertEquals(
+            "/threads/{$this->thread->channel->slug}/{$this->thread->id}", 
+            $this->thread->path()
+        );
     }
 
     /** @test */
@@ -38,5 +48,11 @@ class ThreadsTest extends TestCase
         ]);
 
         $this->assertCount(1, $this->thread->replies);
+    }
+
+    /** @test */
+    public function a_thread_belongs_to_a_channel()
+    {
+        $this->assertInstanceOf(Channel::class, $this->thread->channel);
     }
 }

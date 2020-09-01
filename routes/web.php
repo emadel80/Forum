@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Utilities\Forum;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home',                         'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('threads', 'ThreadsController');
+Route::post('threads/{channel}/{thread}/replies',  'RepliesController@store')->name('replies.store');
 
-Route::post('/threads/{thread}/replies',    'RepliesController@store')->name('replies.store');
+Forum::routes('threads', [
+    'routes' => [
+        'show' => 'threads/{channel}/{thread}',
+    ]
+]);
+

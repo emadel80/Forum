@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Thread;
+use App\Models\Channel;
 
 class RepliesController extends Controller
 {
@@ -11,7 +12,7 @@ class RepliesController extends Controller
         $this->middleware('auth')->only('store');
     }
     
-    public function store(Thread $thread)
+    public function store(Channel $channel, Thread $thread)
     {
         $thread->addReply([
             'body' => request('body'),

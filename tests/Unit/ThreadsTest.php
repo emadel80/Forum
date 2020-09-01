@@ -15,7 +15,7 @@ class ThreadsTest extends TestCase
     protected function setUp() : void
     {
         parent::setUp();
-
+        
         $this->thread = create(Thread::class);
     }
 
@@ -25,7 +25,7 @@ class ThreadsTest extends TestCase
         $this->assertEquals(
             "/threads/{$this->thread->channel->slug}/{$this->thread->id}", 
             $this->thread->path()
-        );
+        );    
     }
 
     /** @test */

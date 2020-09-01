@@ -12,30 +12,24 @@ class CreateThreadsTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $this->get('/threads/create')
-            ->assertRedirect('/login');
+        $this->get('threads/create')
+            ->assertRedirect('login');
 
-        $this->post('/threads/')
-            ->assertRedirect('/login');
+        $this->post('threads')
+            ->assertRedirect('login');
     }
-    
+
     /** @test */
-    public function an_authenticated_user_can_create_forum_threads ()
+    public function an_authenticated_user_can_create_new_forum_threads ()
     {
-        // Given we have a signed in user
         $this->signIn();
 
-        // When we hit the endpoint to create a new thread
         $thread = create(Thread::class);
 
-        $this->post('/threads', $thread->toArray());
+        $this->post('threads', $thread->toArray());
 
-        dd($thread->path());
-        // Then, when we visit the thread page.
-        $response = $this->get($thread->path());
-
-        // We should see the new thread
-        // $response->assertSee($thread->title)
-            // ->assertSee($thread->body);
+        $this->get($thread->path())
+            ->assertSee($thread->title)
+            ->assertSee($thread->body);
     }
 }

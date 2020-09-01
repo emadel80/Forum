@@ -45,13 +45,13 @@ $factory->define(Thread::class, function (Faker $faker) {
 
 $factory->define(Channel::class, function (Faker $faker) {
     $name = $faker->word;
-    
+
     return [
         'name' => $name,
-        'slug' => $name
-    ]; 
+        'slug'  => $name
+    ];
 });
-  
+
 $factory->define(Reply::class, function (Faker $faker) {
     return [
         'thread_id' => function () {

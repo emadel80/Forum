@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Thread;
+use App\Models\Channel;
 
 class CreateThreadsTest extends TestCase
 {
@@ -24,12 +25,47 @@ class CreateThreadsTest extends TestCase
     {
         $this->signIn();
 
-        $thread = create(Thread::class);
+        $thread = make(Thread::class);
 
-        $this->post('threads', $thread->toArray());
+        $response = $this->post('threads', $thread->toArray());
 
-        $this->get($thread->path())
+        $this->get($response->headers->get('Location'))
             ->assertSee($thread->title)
             ->assertSee($thread->body);
+    }
+
+    /** @test */
+    public function a_thread_requires_a_title()
+    {
+        $this->publishThread(['title' => null])
+            ->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function a_thread_requires_a_body()
+    {
+        $this->publishThread(['body' => null])
+            ->assertSessionHasErrors('body');
+    }
+
+    /** @test */
+    public function a_thread_requires_a_valid_channel()
+    {
+        factory(Channel::class, 2)->create();
+        
+        $this->publishThread(['channel_id' => null])
+            ->assertSessionHasErrors('channel_id');
+
+        $this->publishThread(['channel_id' => 999])
+            ->assertSessionHasErrors('channel_id');
+    }
+
+    public function publishThread($withOptions = [])
+    {
+        $this->withExceptionHandling()->signIn();
+
+        $thread = make(Thread::class, $withOptions);
+
+        return $this->post('threads', $thread->toArray());
     }
 }

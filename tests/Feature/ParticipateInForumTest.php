@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Reply;
+use App\Models\Thread;
 
 class ParticipateInForumTest extends TestCase
 {
@@ -31,5 +32,17 @@ class ParticipateInForumTest extends TestCase
 
         $this->post($this->reply->path(), $this->reply->toArray());
         $this->get($this->reply->thread->path())->assertSee($this->reply->body);
+    }
+
+    /** @test */
+    public function a_reply_requires_a_body()
+    {
+        $this->withExceptionHandling()->signIn();
+
+        $reply = make(Reply::class, ['body' => null]);
+
+        $this->post($reply->path(), $reply->toArray())
+            ->assertSessionHasErrors('body');
+
     }
 }

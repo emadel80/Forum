@@ -9,6 +9,15 @@
         </form>
     </li>
 </ul>
+<ul id="channels-dropdown" class="dropdown-content">
+    @foreach (App\Models\Channel::all() as $channel)
+        <li>
+            <a href="{{ $channel->path() }}">
+                {{ $channel->name }}
+            </a>
+        </li>
+    @endforeach
+</ul>
 <nav>
     <div class="nav-wrapper">
         <a href="{{ url('/') }}" class="brand-logo">
@@ -20,6 +29,14 @@
                 <a href="{{ route('threads.index') }}">
                     {{ _('All Threads') }}
                 </a>
+            </li>
+            <li>
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="channels-dropdown">
+                        Channels
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
             </li>
         </ul>
         <ul class="right hide-on-med-and-down">

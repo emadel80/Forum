@@ -34,4 +34,5 @@ const app = new Vue({
 $(document).ready(function () {
     $(".dropdown-trigger").dropdown({coverTrigger: false});
     $('.sidenav').sidenav();
+    $('select').formSelect();
 });

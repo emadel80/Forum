@@ -22,6 +22,11 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red" href="{{ route('threads.create') }}">
+                        <i class="large material-icons">add</i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

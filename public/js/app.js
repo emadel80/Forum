@@ -55066,6 +55066,7 @@ $(document).ready(function () {
     coverTrigger: false
   });
   $('.sidenav').sidenav();
+  $('select').formSelect();
 });
 
 /***/ }),

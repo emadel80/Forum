@@ -1,0 +1,41 @@
+// Navigation Bar
+.nav-wrapper {
+    margin: 0 2rem;
+}
+
+.nav-wrapper ul.left {
+    position: relative;
+    left: 10%;
+}
+
+#mobile-nav .dropdown-trigger .material-icons {
+    margin-left: 0.2rem;
+}
+
+// Threads
+.card .card-content .card-title .thread-card-title {
+    font-size: 2.8rem;
+}
+
+.card-vertical-align {
+    margin-top: 160px;
+}
+
+// Replies
+.card .card-content .card-title .reply-card-title {
+    font-size: 1.2rem;
+}
+
+// Form Spacing
+.row.row-form {
+    margin-bottom: 0;
+}
+
+// Form Validation
+.red-underline {
+    border-bottom-color: red !important;
+}
+
+input[type="text"]:focus.red-underline, textarea:focus.red-underline {
+    box-shadow: 0 1px 0 0 red !important;
+}
